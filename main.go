@@ -4,13 +4,11 @@ import "fmt"
 
 func main() {
 
-	var n int
+	var n float64
 
-	n = 1
+	n = 2
 
-	fmt.Println(n)
-
-	check := checkIfIsPrimo(n)
+	check := CheckIfIsPrimo(n)
 
 	if check == true {
 		fmt.Println("Es Primo")
@@ -20,24 +18,27 @@ func main() {
 
 }
 
-func checkIfIsPrimo(n int) (check bool) {
+//CheckIfIsPrimo ...
+func CheckIfIsPrimo(n float64) (check bool) {
 
-	if n == 1 {
+	if n == 2 {
 		check = true
 		return
 	}
 
-	if n == 0 {
-		return
-	}
+	for i := 2; i < int(n); i++ {
 
-	x := n / 2
+		x1 := n / float64(i)
 
-	if x*2 == n {
+		x2 := int(x1)
+
+		if x1-float64(x2) == 0 {
+			check = false
+			return
+		}
 
 		check = true
 
 	}
-
 	return
 }
